@@ -1,4 +1,4 @@
-module github.com/biranjan/simple_rest/pkg
+module github.com/biranjan/simple_rest
 
 go 1.13
 

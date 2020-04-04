@@ -3,11 +3,12 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/biranjan/simple_REST/pkg/models"
-	"github.com/biranjan/simple_REST/pkg/utils"
-	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
+
+	"github.com/biranjan/simple_rest/pkg/models"
+	"github.com/biranjan/simple_rest/pkg/utils"
+	"github.com/gorilla/mux"
 )
 
 var NewBook models.Book
