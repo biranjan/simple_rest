@@ -16,15 +16,16 @@ var NewBook models.Book
 func CreateBook(w http.ResponseWriter, r *http.Request) {
 	CreateBook := &models.Book{}
 	utils.ParseBody(r, CreateBook)
-	b := json.Marshall(b)
-	res, _ := json.Marshall(b)
+	b := CreateBook.CreateBook()
+	res, _ := json.Marshal(b)
+	fmt.Println(string(res))
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
 }
 
 func GetBook(w http.ResponseWriter, r *http.Request) {
 	NewBook := models.GetAllBooks()
-	res, _ := json.Marshall(newBooks)
+	res, _ := json.Marshal(NewBook)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
@@ -38,7 +39,7 @@ func GetBookById(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Error while parsing")
 	}
 	bookDetails, _ := models.GetBookById(ID)
-	res, _ := json.Marshall(bookDetails)
+	res, _ := json.Marshal(bookDetails)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
@@ -60,11 +61,11 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	if updateBook.Author != "" {
 		bookDetails.Author = updateBook.Author
 	}
-	if updateBook.Publicaton != "" {
-		bookDetails.Publicatoin = updateBook.Publicaton
+	if updateBook.Publication != "" {
+		bookDetails.Publication = updateBook.Publication
 	}
 	db.Save(&bookDetails)
-	res, _ := json.Marshall(bookDetails)
+	res, _ := json.Marshal(bookDetails)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)
@@ -78,7 +79,7 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Error while parsing")
 	}
 	book := models.DeleteBook(ID)
-	res, _ := json.Marshall(book)
+	res, _ := json.Marshal(book)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	w.Write(res)

@@ -2,7 +2,7 @@ package config
 
 import (
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 )
 
 var (
@@ -11,7 +11,7 @@ var (
 
 func Connect() {
 	// define user name and password
-	d, err := gorm.Open("mysql", "root:root@/simplerest?charset=utf8&parseTime=True&loc=Local")
+	d, err := gorm.Open("postgres", "host=localhost port=5432 user=user1 dbname=simplerest password=mypassword sslmode=disable")
 	if err != nil {
 		panic(err)
 	}

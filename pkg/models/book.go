@@ -15,22 +15,22 @@ type Book struct {
 	Publication string `json:"publication"`
 }
 
-func inti() {
+func init() {
 	config.Connect()
 	db = config.GetDB()
 	db.AutoMigrate(&Book{})
 }
 
-func (b *Book) CreateBook() *Book (
+func (b *Book) CreateBook() *Book {
 	db.NewRecord(b)
 	db.Create(&b)
 	return b
-)
+}
 
 func GetAllBooks() []Book {
 	var Book []Book
-	db.Find(&Books)
-	return Books
+	db.Find(&Book)
+	return Book
 }
 
 func GetBookById(Id int64) (*Book, *gorm.DB) {

@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"github.com/example/simple_rest/pkg/controllers"
+	"github.com/biranjan/simple_rest/pkg/controllers"
 	"github.com/gorilla/mux"
 )
 
